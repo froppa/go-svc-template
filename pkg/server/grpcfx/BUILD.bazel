@@ -1,0 +1,31 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "grpc",
+    srcs = ["module.go"],
+    importpath = "github.com/froppa/go-svc-template/pkg/server/grpc",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//internal/service",
+        "//internal/transport",
+        "//pkg/config",
+        "@org_golang_google_grpc//:grpc",
+        "@org_uber_go_fx//:fx",
+        "@org_uber_go_zap//:zap",
+    ],
+)
+
+go_library(
+    name = "grpcfx",
+    srcs = ["module.go"],
+    importpath = "github.com/froppa/go-svc-template/pkg/server/grpcfx",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//internal/service",
+        "//internal/transport",
+        "//pkg/config",
+        "@org_golang_google_grpc//:grpc",
+        "@org_uber_go_fx//:fx",
+        "@org_uber_go_zap//:zap",
+    ],
+)

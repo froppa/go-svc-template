@@ -1,0 +1,14 @@
+# gazelle:ignore
+# Tell Gazelle to ignore this, to avoid adding grpc.go for now.
+
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name        = "transport",
+    srcs        = ["http.go"],
+    importpath  = "github.com/froppa/go-svc-template/internal/transport",
+    visibility  = ["//:__subpackages__"],
+    deps        = [
+        "//internal/service",
+    ],
+)

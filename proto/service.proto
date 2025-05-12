@@ -1,0 +1,20 @@
+//go:generate protoc \
+//  --go_out=. \
+//  --go-grpc_out=. \
+//  service.proto
+syntax = "proto3";
+package proto;
+option go_package = "github.com/froppa/go-svc-template/proto";
+
+
+service Greeter {
+  rpc Say (HelloRequest) returns (HelloReply);
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}

@@ -1,0 +1,13 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "logger",
+    srcs = ["module.go"],
+    importpath = "github.com/froppa/go-svc-template/pkg/logger",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@org_uber_go_fx//:fx",
+        "@org_uber_go_zap//:zap",
+        "@org_uber_go_zap//zapcore",
+    ],
+)

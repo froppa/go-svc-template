@@ -1,0 +1,14 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "httpfx",
+    srcs = ["module.go"],
+    importpath = "github.com/froppa/go-svc-template/pkg/server/httpfx",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//internal/service",
+        "//pkg/config",
+        "@org_uber_go_fx//:fx",
+        "@org_uber_go_zap//:zap",
+    ],
+)

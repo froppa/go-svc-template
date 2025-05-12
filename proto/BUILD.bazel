@@ -1,0 +1,31 @@
+load("@rules_go//go:def.bzl", "go_library")
+load("@rules_go//proto:def.bzl", "go_proto_library")
+load("@rules_proto//proto:defs.bzl", "proto_library")
+
+package(default_visibility = ["//visibility:public"])
+
+proto_library(
+    name = "service_proto",
+    srcs = ["service.proto"],
+)
+
+go_proto_library(
+    name = "go_proto",
+    importpath = "github.com/froppa/go-svc-template/proto",
+    proto = ":service_proto",
+)
+
+go_proto_library(
+    name = "go_grpc",
+    compilers = ["@io_bazel_rules_go//proto:go_grpc"],
+    importpath = "github.com/froppa/go-svc-template/proto",
+    proto = ":service_proto",
+    deps = [":go_proto"],
+)
+
+go_library(
+    name = "proto",
+    srcs = ["service.pb.go"],
+    importpath = "github.com/froppa/go-svc-template/proto",
+    deps = ["@org_golang_google_grpc//:grpc"],
+)

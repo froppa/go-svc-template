@@ -1,0 +1,6 @@
+---
+meta:
+  name: go-svc-template
+server:
+  httpPort: 8080
+  grpcPort: 9090

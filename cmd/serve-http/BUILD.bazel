@@ -1,0 +1,27 @@
+load("@rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "serve_http_lib",
+    srcs = ["main.go"],
+    data = [
+        "//configs:all",  # include configs/config.yml in runfiles
+    ],
+    importpath = "github.com/froppa/go-svc-template/cmd/serve-http",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//internal/repo",
+        "//internal/service",
+        "//internal/transport",
+        "//pkg/config",
+        "//pkg/logger",
+        "//pkg/server/httpfx",
+        "@com_github_spf13_cobra//:cobra",
+        "@org_uber_go_fx//:fx",
+    ],
+)
+
+go_binary(
+    name = "main",
+    embed = [":serve_http_lib"],
+    visibility = ["//visibility:public"],
+)

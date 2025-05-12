@@ -1,0 +1,7 @@
+load("@gazelle//:def.bzl", "gazelle")
+
+# Regenerate per‐pkg BUILD.bazel files (including for cmd/, pkg/, internal/)
+gazelle(
+    name = "gazelle",
+    prefix = "github.com/froppa/go-svc-template",
+)
