@@ -9,10 +9,6 @@ set -euo pipefail
 
 cd $(git rev-parse --show-toplevel)
 
-echo "→ Cleaning (bazel clean --expunge)"
-bazel clean --expunge
-
-echo
 echo "→ Tidying Bazel modules (bazel mod tidy)"
 bazel mod tidy
 

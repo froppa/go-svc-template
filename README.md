@@ -13,7 +13,7 @@ Minimal, idiomatic Go microservice boilerplate—standalone or monorepo-ready—
 
 ---
 
-## 🚀 Features
+## Features
 
 - HTTP endpoints via `net/http`
 - gRPC stubs via `protoc` & Bazel
@@ -22,7 +22,7 @@ Minimal, idiomatic Go microservice boilerplate—standalone or monorepo-ready—
 - Dependency injection & graceful start/stop with FX
 - Easy to extend or embed in a monorepo
 
-## 🛠 Prerequisites
+## Prerequisites
 
 - Go ≥ 1.24
 - Bazel ≥ 8.x
@@ -30,7 +30,7 @@ Minimal, idiomatic Go microservice boilerplate—standalone or monorepo-ready—
 
 ---
 
-## 🎬 Quick Start
+## Quick Start
 
 ```bash
 git clone https://github.com/froppa/go-svc-template.git
@@ -49,7 +49,7 @@ go run ./cmd/serve-http --config=configs/config.yml
 ```
 ---
 
-## 🧩 Components & Roles
+## Components & Roles
 
 - **cmd/serve-http**
   Cobra CLI entrypoint (`main.go`): parses flags, initializes FX app, starts HTTP.

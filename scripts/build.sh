@@ -19,15 +19,7 @@ cmd_dir=${1:-serve-http}
 #binary_name=${cmd_dir//-/_}
 binary_name=main
 
-echo "→ Cleaning"
-bazel clean --expunge
-
-echo
-echo "→ Regenerating BUILD files"
-bazel run //:gazelle
-
-echo
 echo "→ Building //cmd/$cmd_dir:$binary_name"
 bazel build "//cmd/${cmd_dir}:$binary_name"
 
-echo "✅ $cmd_dir has been built"
+echo "$cmd_dir has been built"
