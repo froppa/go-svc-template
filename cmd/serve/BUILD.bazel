@@ -22,6 +22,23 @@ go_library(
 
 go_binary(
     name = "main",
-    embed = [":serve_http_lib"],
+    embed = [":serve_lib"],
     visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "serve_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/froppa/go-svc-template/cmd/serve",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//internal/repo",
+        "//internal/service",
+        "//internal/transport",
+        "//pkg/config",
+        "//pkg/logger",
+        "//pkg/server/httpfx",
+        "@com_github_spf13_cobra//:cobra",
+        "@org_uber_go_fx//:fx",
+    ],
 )

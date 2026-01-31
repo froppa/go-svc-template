@@ -13,8 +13,17 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "serve_http",
-	Short: "Start HTTP server",
+	Use:   "serve",
+	Short: "Start server",
+	Run: func(cmd *cobra.Command, args []string) {
+		cmd.Help()
+	},
+}
+
+var serveHTTPCmd = &cobra.Command{
+	Use: "http",
+
+	Short: "Serve HTTP server",
 	Run: func(cmd *cobra.Command, args []string) {
 		config.RegisterFlags(cmd)
 		app := fx.New(
@@ -30,6 +39,7 @@ var rootCmd = &cobra.Command{
 }
 
 func main() {
+	rootCmd.AddCommand(serveHTTPCmd)
 	if err := rootCmd.Execute(); err != nil {
 		panic(err)
 	}

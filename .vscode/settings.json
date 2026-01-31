@@ -1,29 +1,66 @@
 {
-  "[go]": {
-    "editor.insertSpaces": true,
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
-    }
-  },
-  "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/.DS_Store": true,
-    "**/Thumbs.db": true,
-    "**/bazel-*/": true,
-  },
-  "files.watcherExclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/.DS_Store": true,
-    "**/Thumbs.db": true,
-    "**/bazel-*/": true,
-  },
-  "go.lintOnSave": "package",
-  "go.formatTool": "gofmt",
-  "go.lintTool": "golangci-lint",
-  "go.lintFlags": ["--fast"]
+    "go.toolsManagement.autoUpdate": true,
+    "go.useLanguageServer": true,
+    "go.addTags": {
+        "tags": "json",
+        "options": "json=omitempty",
+        "promptForTags": false,
+        "transform": "snakecase"
+    },
+    "gopls": {
+        "formatting.gofumpt": true,
+        "formatting.local": "github.com/froppa",
+        "usePlaceholders": false,
+        "ui.semanticTokens": true,
+        "staticcheck": false // Enable/Disable if not causing memory issues
+    },
+    "go.lintTool": "golangci-lint",
+    "go.lintFlags": ["--fast", "--timeout", "5m", "--fix"],
+    // disable test caching, race and show coverage (in sync with makefile)
+    "go.testFlags": [
+        "-cover",
+        "-race",
+        "-count=1",
+        "-v",
+        "-benchtime=5s",
+        "-timeout=5m"
+    ],
+    "go.enableCodeLens": {
+        "runtest": true
+    },
+    "[go]": {
+        "editor.insertSpaces": false,
+        "editor.formatOnSave": true,
+        "editor.formatOnSaveMode": "file",
+        "editor.stickyScroll.enabled": true, // Better navigation for long files
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "always",
+            "source.fixAll": "always"
+        }
+    },
+
+    // Enhanced inlay hints
+    // "go.inlayHints.compositeLiteralFields": true,
+    // "go.inlayHints.compositeLiteralTypes": true,
+    // "go.inlayHints.functionTypeParameters": true,
+    // "go.inlayHints.parameterNames": false,
+    // "go.inlayHints.rangeVariableTypes": false,
+    // "go.inlayHints.constantValues": true,
+
+    // // Security checks
+    "go.diagnostic.vulncheck": "Imports",
+    "go.toolsEnvVars": {
+        "GOFLAGS": "-buildvcs=false" // Better performance for large repos
+    },
+    "git.ignoreRebaseWarning": true,
+    "git.replaceTagsWhenPull": true,
+    "makefile.configureOnOpen": true,
+    "workbench.colorTheme": "One Dark Pro Night Flat",
+    "workbench.tree.indent": 2,
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.autoIndent": "full",
+    "editor.fontFamily": "'Fira Code'",
+    "editor.fontLigatures": true,
+    "editor.cursorStyle": "line",
+    "editor.cursorBlinking": "smooth"
 }
