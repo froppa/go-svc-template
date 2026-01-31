@@ -6,15 +6,13 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/froppa/go-svc-template/internal/service"
 	"github.com/froppa/go-svc-template/pkg/config"
 	"go.uber.org/fx"
 	"go.uber.org/zap"
 )
 
-func NewMux(svc service.Service) *http.ServeMux {
-	mux := http.NewServeMux()
-	return mux
+func NewMux() *http.ServeMux {
+	return http.NewServeMux()
 }
 
 func HTTPPort(cfg *config.Config) int { return cfg.Server.HTTPPort }

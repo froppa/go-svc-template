@@ -25,9 +25,12 @@ func NewGRPCServer(
 	port int,
 	svc service.Service,
 	log *zap.Logger,
-) {
+) error {
 	addr := fmt.Sprintf(":%d", port)
-	lis, _ := net.Listen("tcp", addr)
+	lis, err := net.Listen("tcp", addr)
+	if err != nil {
+		return err
+	}
 	server := grpc.NewServer()
 	transport.RegisterGRPCServices(server, svc)
 
@@ -43,4 +46,5 @@ func NewGRPCServer(
 			return nil
 		},
 	})
+	return nil
 }
